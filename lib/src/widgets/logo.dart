@@ -15,7 +15,7 @@ class Logo extends StatelessWidget {
         width: 170.0,
         child: Column(
           children:  <Widget>[
-            const Image(image: const AssetImage('assets/tag-logo.png')),
+            const Image(image: AssetImage('assets/tag-logo.png')),
             const SizedBox(height: 20.0),
             Text(title, style: const TextStyle(fontSize: 30.0)),
           ],
