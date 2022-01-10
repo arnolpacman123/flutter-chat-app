@@ -7,7 +7,7 @@ class BlueButton extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

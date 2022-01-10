@@ -6,7 +6,7 @@ import 'package:chat_app/src/pages/login_page.dart';
 import 'package:chat_app/src/pages/register_page.dart';
 import 'package:chat_app/src/pages/loading_page.dart';
 
-const String initialRoute = ChatPage.routeName;
+const String initialRoute = LoadingPage.routeName;
 
 final Map<String, Widget Function(BuildContext)> routes = {
   UsuariosPage.routeName: (_) => const UsuariosPage(),
