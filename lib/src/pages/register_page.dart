@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:chat_app/src/services/auth_service.dart';
+import 'package:chat_app/src/services/socket_service.dart';
 
 import 'package:chat_app/src/widgets/logo.dart';
 import 'package:chat_app/src/widgets/labels.dart';
@@ -63,6 +64,7 @@ class __FormState extends State<_Form> {
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
+    final socketService = Provider.of<SocketService>(context);
     return Container(
       margin: const EdgeInsets.only(top: 40.0),
       padding: const EdgeInsets.symmetric(horizontal: 50.0),
@@ -97,6 +99,7 @@ class __FormState extends State<_Form> {
                       passwordController.text,
                     );
                     if (registerOk) {
+                      socketService.connect();
                       Navigator.pushReplacementNamed(context, 'usuarios-page');
                     } else {
                       mostrarAlerta(

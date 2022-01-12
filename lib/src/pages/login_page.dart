@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:chat_app/src/services/auth_service.dart';
-import 'package:chat_app/src/helpers/mostrar_alerta.dart';
+import 'package:chat_app/src/services/socket_service.dart';
 import 'package:chat_app/src/widgets/logo.dart';
 import 'package:chat_app/src/widgets/labels.dart';
 import 'package:chat_app/src/widgets/custom_input.dart';
 import 'package:chat_app/src/widgets/blue_button.dart';
+import 'package:chat_app/src/helpers/mostrar_alerta.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -61,6 +62,7 @@ class __FormState extends State<_Form> {
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context);
+    final socketService = Provider.of<SocketService>(context);
     return Container(
       margin: const EdgeInsets.only(top: 40.0),
       padding: const EdgeInsets.symmetric(horizontal: 50.0),
@@ -89,7 +91,7 @@ class __FormState extends State<_Form> {
                       passwordController.text.trim(),
                     );
                     if (loginOk) {
-                      // TODO: Conectar a nuestro socket server
+                      socketService.connect();
                       Navigator.pushReplacementNamed(context, 'usuarios-page');
                     } else {
                       mostrarAlerta(
